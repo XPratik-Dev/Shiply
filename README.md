@@ -1,10 +1,5 @@
 <div align="center">
 
-<img src="/.github/screenshots/01-landing.png" alt="Shiply" width="100%" />
-
-<br />
-<br />
-
 <h1>⚡ Shiply</h1>
 
 <p><strong>Turn GitHub commits into polished changelogs — powered by AI.</strong><br/>
@@ -22,6 +17,8 @@ No manual writing. No copy-pasting. Just ship.</p>
 <br/>
 
 [**Live Demo**](https://shiply.vercel.app) · [**Report Bug**](https://github.com/YOUR_USERNAME/shiply/issues) · [**Request Feature**](https://github.com/YOUR_USERNAME/shiply/issues)
+
+<br/>
 
 </div>
 
@@ -50,25 +47,28 @@ Built for developers and product teams who ship fast and want consistent release
 
 ## 🖼️ Screenshots
 
-<table>
-  <tr>
-    <td align="center"><strong>Dashboard</strong></td>
-    <td align="center"><strong>Repositories</strong></td>
-  </tr>
-  <tr>
-    <td><img width="1181" height="646" alt="Screenshot 1" src="https://github.com/user-attachments/assets/0f092d38-3aa0-4ba7-b22b-4afb722e3c4a" />
-</td>
-    <td><img src="/.github/screenshots/03-repos.png" alt="Repositories" /></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>Changelogs</strong></td>
-    <td align="center"><strong>Billing</strong></td>
-  </tr>
-  <tr>
-    <td><img src="/.github/screenshots/04-changelogs.png" alt="Changelogs" /></td>
-    <td><img src="/.github/screenshots/05-billing.png" alt="Billing" /></td>
-  </tr>
-</table>
+### 🏠 Landing Page
+<img width="1181" height="646" alt="Screenshot 1" src="https://github.com/user-attachments/assets/727eaf1c-7f6c-42b4-a02a-e939a1455d1b" />
+
+<br/>
+
+### 📊 Dashboard
+<img width="1154" height="632" alt="Screenshot 2" src="https://github.com/user-attachments/assets/249be8b0-1b90-4991-9c79-bb5fe84f8e7a" />
+
+<br/>
+
+### 🗂️ Repositories
+<img width="982" height="610" alt="Screenshot 3" src="https://github.com/user-attachments/assets/1c2a7545-0b41-41c7-8e2d-bf80479425d3" />
+
+<br/>
+
+### 📋 Changelogs
+<img width="993" height="555" alt="Screenshot 4" src="https://github.com/user-attachments/assets/feca6033-740b-445e-a825-d03511bbe28f" />
+
+<br/>
+
+### 💳 Billing & Plans
+<img width="1229" height="559" alt="Screenshot 5" src="https://github.com/user-attachments/assets/465d554f-75c7-4a32-a77f-8c9112367c5c" />
 
 ---
 
@@ -98,8 +98,8 @@ Built for developers and product teams who ship fast and want consistent release
 - A [Supabase](https://supabase.com) project
 - A [GitHub OAuth App](https://github.com/settings/developers)
 - An [Anthropic API key](https://console.anthropic.com)
-- A [Stripe](https://stripe.com) account (optional for billing)
-- A [Resend](https://resend.com) account (optional for email)
+- A [Stripe](https://stripe.com) account *(optional for billing)*
+- A [Resend](https://resend.com) account *(optional for email)*
 
 ### Installation
 
@@ -161,7 +161,7 @@ npx prisma db push
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and you're live.
+Open [http://localhost:3000](http://localhost:3000) and you're live. ✅
 
 ---
 
@@ -188,6 +188,11 @@ shiply/
 ├── prisma/                 # Database schema & migrations
 └── .github/
     └── screenshots/        # Repo screenshots
+        ├── Screenshot_1.png   ← Landing page
+        ├── Screenshot_2.png   ← Dashboard
+        ├── Screenshot_3.png   ← Repositories
+        ├── Screenshot_4.png   ← Changelogs
+        └── Screenshot_5.png   ← Billing
 ```
 
 ---
