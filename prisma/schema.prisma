@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String      @id @default(cuid())
+  email                  String      @unique
+  name                   String?
+  image                  String?
+  githubId               String?     @unique
+  githubToken            String?
+  plan                   String      @default("FREE")
+  stripeCustomerId       String?     @unique
+  stripeSubscriptionId   String?     @unique
+  createdAt              DateTime    @default(now())
+  updatedAt              DateTime    @updatedAt
+
+  repos                  Repo[]
+  changelogs             Changelog[]
+  accounts               Account[]
+  sessions               Session[]
+}
+
+model Repo {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  githubRepoId  String
+  owner         String
+  name          String
+  fullName      String
+  description   String?
+  isPrivate     Boolean     @default(false)
+  defaultBranch String      @default("main")
+  htmlUrl        String?
+  webhookId     String?
+  lastSyncedAt  DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  changelogs    Changelog[]
+
+  @@unique([userId, githubRepoId])
+  @@index([userId])
+}
+
+model Changelog {
+  id            String            @id @default(cuid())
+  userId        String
+  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repoId        String
+  repo          Repo              @relation(fields: [repoId], references: [id], onDelete: Cascade)
+  slug          String            @unique
+  title         String
+  version       String?
+  isPublished   Boolean           @default(false)
+  isPublic      Boolean           @default(true)
+  fromCommit    String?
+  toCommit      String?
+  fromDate      DateTime?
+  toDate        DateTime?
+  rawCommits    String            @default("[]")
+  aiSummary     String
+  generatedBy   String            @default("local")
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  entries       ChangelogEntry[]
+
+  @@index([userId])
+  @@index([repoId])
+  @@index([slug])
+}
+
+model ChangelogEntry {
+  id            String      @id @default(cuid())
+  changelogId   String
+  changelog     Changelog   @relation(fields: [changelogId], references: [id], onDelete: Cascade)
+  type          String      @default("CHORE")
+  title         String
+  description   String?
+  commits       String      @default("[]")
+  orderIndex    Int
+
+  @@index([changelogId])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
