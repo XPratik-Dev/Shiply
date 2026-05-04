@@ -56,7 +56,7 @@ Built for developers and product teams who ship fast and want consistent release
     <td align="center"><strong>Repositories</strong></td>
   </tr>
   <tr>
-    <td><img src="/.github/screenshots/02-dashboard.png" alt="Dashboard" /></td>
+    <td><img src="<img width="1181" height="646" alt="Screenshot 1" src="https://github.com/user-attachments/assets/e189e895-261d-45bd-904f-6320e2739942" />" alt="Dashboard" /></td>
     <td><img src="/.github/screenshots/03-repos.png" alt="Repositories" /></td>
   </tr>
   <tr>
