@@ -1,11 +1,12 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { prisma } from "@/lib/db";
+import { ensureSqliteSchema, prisma } from "@/lib/db";
 import { DEMO_USER_ID, SESSION_COOKIE } from "@/lib/session";
 
 export { DEMO_USER_ID, SESSION_COOKIE };
 
 export async function ensureDemoUser(seed = false) {
+  await ensureSqliteSchema();
   const user = await prisma.user.upsert({
     where: { id: DEMO_USER_ID },
     update: { email: "demo@shiply.local" },
@@ -101,6 +102,7 @@ export async function getCurrentUser() {
   const session = cookieStore.get(SESSION_COOKIE)?.value;
   if (session !== DEMO_USER_ID) return null;
 
+  await ensureSqliteSchema();
   return prisma.user.findUnique({ where: { id: DEMO_USER_ID } });
 }
 

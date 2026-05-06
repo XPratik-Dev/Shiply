@@ -2,6 +2,10 @@
   "name": "shiply",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": "20.17.x"
+  },
   "scripts": {
     "predev": "prisma generate && node scripts/setup-db.mjs",
     "dev": "next dev",
